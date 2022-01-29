@@ -1,43 +1,40 @@
-/* eslint-disable */
-// import "bootstrap";
-// import "./style.css";
-
-// import "./assets/img/rigo-baby.jpg";
-// import "./assets/img/4geeks.ico";
-
-window.onload = function() {
-  //write your code here
-  // setTimeout(() => {
-  //   document.querySelector("#card").classList.add("diams"); //aqui debo colocar las funciones a llamar
-  //   document.querySelector("#card").classList.add("hearts"); //aqui debo colocar las funciones a llamar
-  // }),
-  //   10000; //10 segundos
-  let cardDealer = document.getElementById("card");
-  cardDealer.addEventListener("click", () => {
-    let generateRandomNumberCard = () => {
-      let arrNumbersCard = [
-        "A",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "J",
-        "Q",
-        "K"
-      ];
-      let indexNumbersCard = Math.floor(Math.random() * getNumbers.length);
-      return arrNumbersCard[indexNumbersCard];
-    };
-
-    let generateRandomSuitCard = () => {
-      let arrSuitsCard = ["diammonds", "hearts", "clubs", "spaces"];
-      let indexSuitsCard = Math.floor(Math.random() * getNumbers.length);
-      return arrSuitsCard[indexSuitsCard];
-    };
-  });
+window.onload = () => {
+  let generateRandomSuitCard = () => {
+    let cardSuits = ["diams", "hearts", "clubs", "spades"];
+    let indexCardSuits = Math.floor(Math.random() * cardSuits.length);
+    return cardSuits[indexCardSuits];
+  };
+  let generateRandomNumberCard = () => {
+    let cardNumbers = [
+      "A",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "J",
+      "Q",
+      "K"
+    ];
+    let indexCardNumbers = Math.floor(Math.random() * cardNumbers.length);
+    return cardNumbers[indexCardNumbers];
+  };
+  document.querySelector(
+    ".card"
+  ).className = `card ${generateRandomSuitCard()}`;
+  document.querySelector(".card").innerHTML = generateRandomNumberCard();
+  setInterval(() => {
+    document.querySelector(
+      ".card"
+    ).className = `card ${generateRandomSuitCard()}`;
+    document.querySelector(".card").innerHTML = generateRandomNumberCard();
+  }, 5000);
 };
+let ButtonCard = document.querySelector(".button-card");
+ButtonCard.addEventListener("click", () => {
+  window.onload();
+});
